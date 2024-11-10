@@ -13,6 +13,8 @@ export function sigmoidLoss(
     return sigmoid(z);
 }
 
+// Differentiate the sigmoid loss function with respect to the winner's rating.
+// Formula courtesy of Sympy.
 export function sigmoidLossGradient(
     winner_rating: Rating,
     loser_rating: Rating,
