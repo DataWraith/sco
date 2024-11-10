@@ -23,7 +23,7 @@ export function updateSingle(
     const winner_updated = winner - lr * gradient;
     const loser_updated = loser + lr * gradient;
 
-    return [clamp(winner_updated, 0, 1), clamp(loser_updated, 0, 1)];
+    return [clamp(winner_updated, 0, 100), clamp(loser_updated, 0, 100)];
 }
 
 export function updateRatings(
@@ -47,8 +47,8 @@ export function updateRatings(
                 const loser = ranking[j].player;
 
                 const [winner_updated, loser_updated] = updateSingle(
-                    updated_ratings.get(winner) ?? 0.5,
-                    updated_ratings.get(loser) ?? 0.5,
+                    updated_ratings.get(winner) ?? 50,
+                    updated_ratings.get(loser) ?? 50,
                     lr,
                     tau,
                 );

@@ -23,12 +23,12 @@ as input and returns an updated set of ratings for each player.
 // TODO: Publish to registry
 import { updateRatings } from "./sco.ts";
 
-// Step 1: Initialize ratings. Ratings must be between 0 and 1.
-// Ratings of players that are not mentioned are initialized to 0.5.
+// Step 1: Initialize ratings. Ratings must be between 0 and 100.
+// Ratings of players that are not mentioned are initialized to 50.
 const ratings = new Map([
-    ["Alice", 0.65],
-    ["Bob", 0.35],
-    ["Charlie", 0.15],
+    ["Alice", 65],
+    ["Bob", 35],
+    ["Charlie", 15],
 ]);
 
 // Step 2: Generate rankings (as in a race, a lower rank is better).
