@@ -7,6 +7,11 @@ deps:
   RUN deno install
   SAVE ARTIFACT deno.lock AS LOCAL ./deno.lock
 
+test:
+  FROM +deps
+  COPY src src
+  RUN deno test
+
 build:
   FROM +deps
   COPY src src
