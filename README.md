@@ -2,7 +2,7 @@
 
 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
-Soft Condercet Optimization is a ranking scheme inspired by [social choice
+Soft Condorcet Optimization is a ranking scheme inspired by [social choice
 theory](https://en.wikipedia.org/wiki/Social_choice_theory).
 
 Similar to Elo ratings, it can be used to estimate the relative strength of a
@@ -14,7 +14,7 @@ task.
 
 ## The `sco` library
 
-This repository contains an implementation of Soft Condercet Optimization in
+This repository contains an implementation of Soft Condorcet Optimization in
 TypeScript. It expects the prior ratings of each player and an array of outcomes
 as input and returns an updated set of ratings for each player.
 
