@@ -13,8 +13,8 @@ task.
 ## The `sco` package
 
 This repository contains an implementation of Soft Condercet Optimization in
-TypeScript. It expects an array of game outcomes as input and returns a sorted
-list of players and their estimated rating.
+TypeScript. It expects the prior ratings of each player and an array of game
+outcomes as input and returns an updated set of ratings for each player.
 
 
 ### Usage
