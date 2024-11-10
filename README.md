@@ -68,7 +68,7 @@ $ cat <<EOF > rankings.jsonl
 [{"player": "Alice", "rank": 3}, {"player": "Bob", "rank": 1}, {"player": "Charlie", "rank": 4}, {"player": "Dave", "rank": 2}]
 EOF
 
-$ ./sco rankings.jsonl --learning-rate 0.5 --temperature 1.0 --output ratings.json
+$ ./sco rankings.jsonl --learning-rate 0.5 --temperature 1.0
 ```
 
 
