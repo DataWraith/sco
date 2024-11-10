@@ -15,21 +15,21 @@ describe("sortRanking", () => {
   });
 });
 
-describe("updateRatings", () => {
+describe("updateSingle", () => {
   it("should update ratings (lr=1.0)", () => {
-    const [winner_updated, loser_updated] = updateRatings(0.5, 0.5, 1.0);
+    const [winner_updated, loser_updated] = updateSingle(0.5, 0.5, 1.0);
     expect(winner_updated).toBeCloseTo(0.75);
     expect(loser_updated).toBeCloseTo(0.25);
   });
 
   it("should update ratings (lr=0.5)", () => {
-    const [winner_updated, loser_updated] = updateRatings(0.5, 0.5, 0.5);
+    const [winner_updated, loser_updated] = updateSingle(0.5, 0.5, 0.5);
     expect(winner_updated).toBeCloseTo(0.625);
     expect(loser_updated).toBeCloseTo(0.375);
   });
 
   it("should clamp ratings to [0, 1]", () => {
-    const [winner_updated, loser_updated] = updateRatings(1.0, 0.0, 1.0);
+    const [winner_updated, loser_updated] = updateSingle(1.0, 0.0, 1.0);
     expect(winner_updated).toEqual(1.0);
     expect(loser_updated).toEqual(0.0);
   });

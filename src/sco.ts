@@ -14,12 +14,12 @@ function clamp(x: number, min: number, max: number): number {
     return Math.max(min, Math.min(max, x));
 }
 
-export function updateRatings(
+export function updateSingle(
     winner: Rating,
     loser: Rating,
     lr: number = 0.5,
     tau: number = 1.0,
-): [Rating, Rating] {
+): [winner: Rating, loser: Rating] {
     const gradient = sigmoidLossGradient(winner, loser, tau);
     const winner_updated = winner - lr * gradient;
     const loser_updated = loser + lr * gradient;
