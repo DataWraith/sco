@@ -5,7 +5,7 @@ export type Ratings = Map<string, Rating>;
 export type Rank = { player: string; rank: number };
 export type Ranking = Rank[];
 
-export function sortRanking(ranking: Ranking): Ranking {
+function sortRanking(ranking: Ranking): Ranking {
     return ranking.sort((a, b) => a.rank - b.rank);
 }
 
