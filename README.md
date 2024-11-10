@@ -69,6 +69,12 @@ $ cat <<EOF > rankings.jsonl
 EOF
 
 $ ./sco rankings.jsonl --learning-rate 0.5 --temperature 1.0
+{
+  "Alice": 50.124119205271754,
+  "Bob": 50.24569130995567,
+  "Charlie": 49.50852481287547,
+  "Dave": 50.12166467189711
+}
 ```
 
 
