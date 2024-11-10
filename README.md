@@ -1,5 +1,7 @@
 # Soft Condorcet Optimization
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 Soft Condercet Optimization is a ranking scheme inspired by [social choice
 theory](https://en.wikipedia.org/wiki/Social_choice_theory).
 
@@ -10,7 +12,7 @@ competitions where more than two players are ranked in or on a single game or
 task.
 
 
-## The `sco` package
+## The `sco` library
 
 This repository contains an implementation of Soft Condercet Optimization in
 TypeScript. It expects the prior ratings of each player and an array of outcomes
@@ -20,11 +22,10 @@ as input and returns an updated set of ratings for each player.
 ### Usage
 
 ```ts
-// TODO: Publish to registry
-import { updateRatings } from "./sco.ts";
+import { updateRatings } from "./src/sco.ts";
 
 // Step 1: Initialize ratings. Ratings must be between 0 and 100.
-// Ratings of players that are not mentioned are initialized to 50.
+// Ratings of players that are not mentioned are defaulted to 50.
 const ratings = new Map([
     ["Alice", 65],
     ["Bob", 35],
@@ -57,7 +58,7 @@ const temperature = 1.0;
 const updated_ratings = updateRatings(ratings, rankings, learning_rate, temperature);
 ```
 
-### Commandline tool
+## The `sco` commandline tool
 
 The package also contains a commandline tool that can be used to calculate
 ratings based on a `.jsonl` file containing rankings, one ranking per line.
@@ -77,6 +78,7 @@ $ ./sco rankings.jsonl --learning-rate 0.5 --temperature 1.0
 }
 ```
 
+You can build the tool using `deno compile main.ts`.
 
 ### Limitations
 
