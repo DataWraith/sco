@@ -13,11 +13,14 @@ export function sigmoidLoss(
     return sigmoid(z);
 }
 
-function sigmoidLossGradient(
+export function sigmoidLossGradient(
     winner_rating: Rating,
     loser_rating: Rating,
     tau: number = 1.0,
 ): number {
-    const s = sigmoidLoss(winner_rating, loser_rating, tau);
-    return s * (1 - s);
+    const w_tau = Math.exp(winner_rating / tau);
+    const l_tau = Math.exp(loser_rating / tau);
+    const l_tau_neg = Math.exp(-loser_rating / tau);
+
+    return -w_tau / (tau * l_tau + 2 * tau * w_tau + tau * l_tau_neg * Math.exp(2 * winner_rating / tau))
 }
