@@ -13,13 +13,63 @@ task.
 ## The `sco` package
 
 This repository contains an implementation of Soft Condercet Optimization in
-TypeScript. It expects the prior ratings of each player and an array of game
-outcomes as input and returns an updated set of ratings for each player.
+TypeScript. It expects the prior ratings of each player and an array of outcomes
+as input and returns an updated set of ratings for each player.
 
 
 ### Usage
 
-TODO
+```ts
+// TODO: Publish to registry
+import { updateRatings } from "./sco.ts";
+
+// Step 1: Initialize ratings. Ratings must be between 0 and 1.
+// Ratings of players that are not mentioned are initialized to 0.5.
+const ratings = new Map([
+    ["Alice", 0.65],
+    ["Bob", 0.35],
+    ["Charlie", 0.15],
+]);
+
+// Step 2: Generate rankings (as in a race, a lower rank is better).
+const rankings = [
+    [
+        // Alice beats both Bob and Charlie,
+        // Bob and Charlie tie.
+        { player: "Alice", rank: 1 },
+        { player: "Bob", rank: 2 },
+        { player: "Charlie", rank: 2 },
+    ],
+    [
+        // Players need not be sorted by rank, the array is automatically sorted.
+        { player: "Alice", rank: 3 },
+        { player: "Bob", rank: 1 },
+        { player: "Charlie", rank: 4 },
+        { player: "Dave", rank: 2 },
+    ]
+];
+
+// Step 3: Update ratings using Stochastic Gradient Descent.
+// A lower temperature leads to faster and potentially more unstable updates.
+const learning_rate = 0.5;
+const temperature = 1.0;
+
+const updated_ratings = updateRatings(ratings, rankings, learning_rate, temperature);
+```
+
+### Commandline tool
+
+The package also contains a commandline tool that can be used to calculate
+ratings based on a `.jsonl` file containing rankings, one ranking per line.
+
+```bash
+$ cat <<EOF > rankings.jsonl
+[{"player": "Alice", "rank": 1}, {"player": "Bob", "rank": 2}, {"player": "Charlie", "rank": 2}]
+[{"player": "Alice", "rank": 3}, {"player": "Bob", "rank": 1}, {"player": "Charlie", "rank": 4}, {"player": "Dave", "rank": 2}]
+EOF
+
+$ ./sco rankings.jsonl --learning-rate 0.5 --temperature 1.0 --output ratings.json
+```
 
 
 ### Limitations
